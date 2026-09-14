@@ -28,10 +28,13 @@ print(a + a)
 a = int("3")  # 책에서는 input()으로 입력받는 값
 
 # 셀 6 — gcd에 입력 연결(함수 본문에는 input을 넣지 않는다)
+# 8장에서 만든 gcd(하나씩 모두 확인하는 방식)를 그대로 씁니다.
 def gcd(a, b):
-    while b > 0:
-        a, b = b, a % b
-    return a
+    answer = 1
+    for i in range(1, min(a, b) + 1):
+        if a % i == 0 and b % i == 0:
+            answer = i
+    return answer
 
 # 책의 코드: num1 = int(input("첫 번째 숫자: "))
 # 책의 코드: num2 = int(input("두 번째 숫자: "))
