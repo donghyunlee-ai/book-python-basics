@@ -34,9 +34,11 @@ class GcdLcm:
 
     def gcd(self):
         a, b = self.num1, self.num2
-        while b > 0:
-            a, b = b, a % b
-        return a
+        answer = 1
+        for i in range(1, min(a, b) + 1):
+            if a % i == 0 and b % i == 0:
+                answer = i
+        return answer
 
     def lcm(self):
         return (self.num1 * self.num2) // self.gcd()

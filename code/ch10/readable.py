@@ -21,7 +21,7 @@ print(primes_idiom)
 
 # [셀 3]
 # 줄 수만 줄인 욱여넣은 한 줄 (가장 짧지만 읽기 괴롭습니다)
-primes_crammed = list(map(int, "".join(lines).split()))
+primes_crammed = [int(x) for x in "".join(lines).split()]
 
 print(primes_crammed)
 # 출력: [2, 3, 5]

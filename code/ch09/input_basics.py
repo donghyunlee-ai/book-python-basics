@@ -30,10 +30,13 @@ print(a + a)
 a = int("3")  # 검증용 하드코딩 입력값
 
 # 셀 6 — gcd에 입력 연결(함수 본문에는 input을 넣지 않는다)
+# gcd 본문은 ch08 정본(완전탐색판) 그대로 — code/ch08/project.py와 자구 일치 유지.
 def gcd(a, b):
-    while b > 0:
-        a, b = b, a % b
-    return a
+    answer = 1
+    for i in range(1, min(a, b) + 1):
+        if a % i == 0 and b % i == 0:
+            answer = i
+    return answer
 
 # 본문 원본: num1 = int(input("첫 번째 숫자: "))
 # 본문 원본: num2 = int(input("두 번째 숫자: "))

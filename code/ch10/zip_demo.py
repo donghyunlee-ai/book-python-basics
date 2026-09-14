@@ -48,8 +48,8 @@ numbers = [11, 15, 17]
 results = [True, False, True]
 times = ["0.01초", "0.02초", "0.01초"]
 
-for n, ok, time in zip(numbers, results, times):
-    print(f"숫자 {n} ({ok}) - 소요 시간: {time}")
+for n, ok, elapsed in zip(numbers, results, times):
+    print(f"숫자 {n} ({ok}) - 소요 시간: {elapsed}")
 # 출력:
 # 숫자 11 (True) - 소요 시간: 0.01초
 # 숫자 15 (False) - 소요 시간: 0.02초

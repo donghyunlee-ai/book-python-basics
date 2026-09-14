@@ -35,6 +35,8 @@ def load_cache(filename="primes.txt"):
         with open(filename, "r", encoding="utf-8") as f:
             for line in f:
                 finder.primes.append(int(line.strip()))
+        if finder.primes:
+            finder.checked = finder.primes[-1]
         print(f"캐시 복원 완료: 소수 {len(finder.primes)}개")
     except FileNotFoundError:
         # 파일이 없으면 조용히 넘어갑니다(빈 캐시로 새 출발).
@@ -61,9 +63,18 @@ if __name__ == "__main__":
 
     # 캐시가 없는 상태에서 복원을 시도하고, 소수를 찾은 뒤 저장합니다.
     finder = load_cache()
-    print("200까지의 소수 개수:", len(finder.find_up_to(200)))
+    print("이번 실행에서 새로 찾은 소수:", len(finder.find_up_to(200)))
     assert finder.count() == 46
     save_cache(finder)
+
+    # 두 번째 실행 경로 재현: 캐시가 있는 상태의 출력(본문 둘째 블록)을 그대로 보여준다.
+    # 복원 검증(안전판): 진도표까지 복원되므로 재탐색해도 중복 적재가 없다.
+    finder2 = load_cache()
+    assert finder2.checked == finder2.primes[-1] == 199
+    newly_found = finder2.find_up_to(200)
+    print("이번 실행에서 새로 찾은 소수:", len(newly_found))
+    assert newly_found == [] and finder2.count() == 46
+    save_cache(finder2)
 
     # 완성된 수학 도우미의 여러 실행을 보여줍니다.
     print(f"최대공약수 정상 계산: {gcd(12, 18)}")

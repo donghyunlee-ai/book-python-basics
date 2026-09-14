@@ -46,15 +46,16 @@ print(c3.total_accounts)
 # 출력: 1
 
 # [셀 4] print(a)가 못생겼다 — __str__ 없는 실물은 주소를 찍는다
-class BankAccountNoStr:
+# (본문과 동일하게 BankAccount를 먼저 __str__ 없이 정의하고, 다음 셀이 재정의합니다)
+class BankAccount:
     def __init__(self, account_num, name, balance):
         self.account_num = account_num  # 계좌번호 속성을 추가합니다
         self.name = name
         self.balance = balance
 
-a4 = BankAccountNoStr("123456789", "김파이", 5000.0)
+a4 = BankAccount("123456789", "김파이", 5000.0)
 print(a4)
-# 출력 형태: <__main__.BankAccountNoStr object at 0x...> (주소는 실행마다 달라짐)
+# 출력 형태: <__main__.BankAccount object at 0x...> (주소는 실행마다 달라짐)
 
 # [셀 5] __str__ 정의 — 실물이 스스로를 설명하는 문장을 정한다
 class BankAccount:
